@@ -7,6 +7,7 @@ import SelectLeads from './component/selectLeads'
 import Email from './component/email'
 import EmailTemplate from './component/emailTemplate'
 import Save from './component/save'
+import Submit from './component/ui/submitted'
 
 function App() {
   const [ lead, setLead ] = useState(false)
@@ -15,12 +16,13 @@ function App() {
   const [ selectLead, setSelectedLead ] = useState(false);
   const [ leadName, setLeadName ] = useState("");
   const [ emailTemplate, setEmailTemplate ] = useState("");
+  const [ tick, setTick ] = useState(false)
   // console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", emailTemplate)
 
   return (
     <div className="w-full h-screen px-5 py-2 z-0 relative">
       <NavBar />
-      <Save leadName={leadName} emailTemplate={emailTemplate}/>
+      <Save setTick={setTick} leadName={leadName} emailTemplate={emailTemplate}/>
       <div className="flex justify-center items-center border border-neutral-300 bg-neutral-100 p-2 rounded-xl">
         <div className="bg-white">
           <Node leadName={leadName} setLead={setLead} setEmail={setEmail} setSelectedEmail={setSelectedEmail} emailTemplate={emailTemplate}/>
@@ -79,7 +81,18 @@ function App() {
           <EmailTemplate setSelectedEmail={setSelectedEmail} setEmailTemplate={setEmailTemplate}/>
         </div>
       </div>}
-
+      
+      {tick && <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-sm bg-opacity-50">
+        <div className="relative bg-white p-10 rounded-lg shadow-lg">
+          <button
+            onClick={() => setTick(false)}
+            className="absolute top-2 z-50 cursor-pointer right-2 bg-gray-300 px-2 py-1 rounded-full text-sm"
+          >
+            ✖
+          </button>
+          <Submit/>
+        </div>
+      </div>}
     </div>
   )
 }

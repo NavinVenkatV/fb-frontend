@@ -1,7 +1,7 @@
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import axios from "axios"
 
-function Save({leadName, emailTemplate} : any) {
+function Save({leadName, emailTemplate, setTick} : any) {
 
     const submitDetails = async()=>{
         if(!leadName || !emailTemplate){
@@ -17,7 +17,7 @@ function Save({leadName, emailTemplate} : any) {
             email : "vnavinvenkat@gmail.com"
         })
         if(res){
-            alert("Successfully Submitted!!")
+            setTick(true)
         }
        }catch(e){
         alert("Something went wrong!!")
