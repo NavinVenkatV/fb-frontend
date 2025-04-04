@@ -1,5 +1,5 @@
 
-function Submit({setTick} : any) {
+function Submit() {
     return (
         <div className="p-3  flex flex-col justify-center border border-green-500 rounded-xl w-[600px] h-[300px] bg-white">
             <div className="flex justify-center">
